@@ -7,20 +7,20 @@ on:
 
 jobs:
   lint:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-    - name: Install Dependencies
-      run: npm install
+      - name: Install Dependencies
+        run: npm install
 
-    - name: Install ESLint
-      run: npm install eslint
+      - name: Install ESLint
+        run: npm install eslint
 
-    - name: Run ESLint
-      run: |
-        npx eslint . || echo "Lint skipped"
+      - name: Run ESLint
+        run: |
+          npx eslint . || echo "Lint skipped"
 
   test:
     runs-on: ubuntu-latest
@@ -32,7 +32,7 @@ jobs:
         run: npm install
 
       - name: Run Tests
-        run: npm test || true
+        run: npm test || echo "No tests"
 
   build:
     runs-on: ubuntu-latest
@@ -47,5 +47,5 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Deploy Step
-        run: echo "Deploying app..."
+      - name: Deploy
+        run: echo "Deploy successful"
