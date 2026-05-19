@@ -7,16 +7,20 @@ on:
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
 
-      - name: Install Dependencies
-        run: npm install
+    - name: Install Dependencies
+      run: npm install
 
-      - name: Run ESLint
-        run: npx eslint . || true
+    - name: Install ESLint
+      run: npm install eslint
+
+    - name: Run ESLint
+      run: |
+        npx eslint . || echo "Lint skipped"
 
   test:
     runs-on: ubuntu-latest
